@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Server, ServerMember
+from .models import User, Server, ServerMember, Unit, Resource
 
 # --- 1. User Serializer (For Registration) ---
 class UserSerializer(serializers.ModelSerializer):
@@ -28,3 +28,19 @@ class ServerMemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServerMember
         fields = ['id', 'user_name', 'server_name', 'joined_at']
+    
+    # --- 4. Unit Serializer ---
+class UnitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Unit
+        fields = ['id', 'server', 'name', 'code', 'created_by', 'created_at']
+        read_only_fields = ['created_by', 'created_at']
+
+# --- 5. Resource Serializer (The File Upload) ---
+class ResourceSerializer(serializers.ModelSerializer):
+    uploaded_by_name = serializers.ReadOnlyField(source='uploaded_by.username')
+
+    class Meta:
+        model = Resource
+        fields = ['id', 'unit', 'title', 'file', 'resource_type', 'uploaded_by', 'uploaded_by_name', 'uploaded_at']
+        read_only_fields = ['uploaded_by', 'uploaded_at']
