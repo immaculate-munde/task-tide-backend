@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, Server, ServerMember, Unit, Resource
+from .models import User, Server, ServerMember, Unit, Resource, AssignmentGroup, GroupMember
 
 # Register your models here.
 
@@ -27,3 +27,14 @@ class UnitAdmin(admin.ModelAdmin):
 @admin.register(Resource)
 class ResourceAdmin(admin.ModelAdmin):
     list_display = ('title', 'unit', 'resource_type', 'uploaded_by')
+    
+# --- Assignment Group Admin ---
+@admin.register(AssignmentGroup)
+class AssignmentGroupAdmin(admin.ModelAdmin):
+    # Shows the group name, which unit it belongs to, and the max limit
+    list_display = ('name', 'unit', 'max_members', 'created_by')
+
+# --- Group Member Admin (See who joined) ---
+@admin.register(GroupMember)
+class GroupMemberAdmin(admin.ModelAdmin):
+    list_display = ('user', 'group', 'joined_at')
