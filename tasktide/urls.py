@@ -19,9 +19,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.shortcuts import render
+
+def home_view(request):
+    return render(request, 'index.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home_view, name='home'),
     # This uses the standard Django login page (looks like Admin but for everyone)
     path('test-login/', auth_views.LoginView.as_view(template_name='admin/login.html'), name='test_login'),
     path('api/', include('api.urls')),
