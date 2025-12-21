@@ -58,7 +58,7 @@ class GroupMemberInfoSerializer(serializers.ModelSerializer):
 class AssignmentGroupSerializer(serializers.ModelSerializer):
     member_count = serializers.SerializerMethodField()
     # This shows the list of students inside the JSON
-    members = GroupMemberInfoSerializer(source='members', many=True, read_only=True)
+    members = GroupMemberInfoSerializer(many=True, read_only=True)
 
     class Meta:
         model = AssignmentGroup

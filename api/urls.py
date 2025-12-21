@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import RegisterView, ServerListCreateView, JoinServerView, UnitListCreateView, ResourceListCreateView
+from .views import RegisterView, ServerListCreateView, JoinServerView, UnitListCreateView, ResourceListCreateView, GroupListCreateView, JoinGroupView
+
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -18,4 +19,8 @@ urlpatterns = [
     # Units & Resources
     path('units/', UnitListCreateView.as_view(), name='unit-list-create'),
     path('resources/', ResourceListCreateView.as_view(), name='resource-list-create'),
+    
+    # Groups
+    path('groups/', GroupListCreateView.as_view(), name='group-list-create'),
+    path('groups/<uuid:pk>/join/', JoinGroupView.as_view(), name='join-group'),
 ]

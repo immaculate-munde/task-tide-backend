@@ -123,3 +123,7 @@ SIMPLE_JWT = {
 # --- MEDIA CONFIGURATION (For File Uploads) ---
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Force "Log in" button to use the Human Page, not the Robot Page
+LOGIN_URL = '/api-auth/login/'
+LOGIN_REDIRECT_URL = '/api/servers/'
