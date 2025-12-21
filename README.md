@@ -1,35 +1,37 @@
-# 🌊 TaskTide - School Management API
+# TaskTide - School Management API
 
-TaskTide is a modern backend API for managing academic cohorts, designed with a community-first approach similar to Discord servers. 
+TaskTide is a modern backend API for managing academic cohorts, designed with a community-first approach similar to Discord servers.
 
 Unlike traditional rigid school portals, TaskTide allows Class Representatives to create dynamic "Servers" (classrooms) where students can join via unique codes, access units (subjects), and collaborate in assignment groups.
 
-## 🚀 Key Features
+## Key Features
 
-* **Role-Based Access Control (RBAC):** Distinct permissions for Admins, Class Reps, Lecturers, and Students.
-* **Server System:** Dynamic classroom creation with unique 6-digit join codes.
-* **Authentication:** Secure User Registration and Login using **JWT (JSON Web Tokens)**.
-* **Scalable Architecture:** Built on Django REST Framework with a normalized database schema.
-
----
-
-## 🛠️ Tech Stack
-
-* **Language:** Python 3.x
-* **Framework:** Django & Django REST Framework (DRF)
-* **Authentication:** SimpleJWT
-* **Database:** SQLite (Dev) / PostgreSQL (Prod)
+- **Role-Based Access Control (RBAC):** Distinct permissions for Admins, Class Reps, Lecturers, and Students.
+- **Server System:** Dynamic classroom creation with unique 6-digit join codes.
+- **Resource Sharing:** Class Reps can upload lecture notes and PDFs for specific units.
+- **Study Groups:** Students can self-organize into assignment groups for collaboration.
+- **Authentication:** Secure User Registration and Login using **JWT (JSON Web Tokens)**.
+- **Scalable Architecture:** Built on Django REST Framework with a normalized database schema.
 
 ---
 
-## 💻 Local Development Setup
+## Tech Stack
+
+- **Language:** Python 3.12
+- **Framework:** Django & Django REST Framework (DRF)
+- **Authentication:** SimpleJWT & Session Auth
+- **Database:** SQLite (Dev) / PostgreSQL (Prod)
+
+---
+
+## Local Development Setup
 
 Follow these steps to set up the project locally on your machine.
 
 ### 1. Clone the Repository
 
 ```bash
-git clone <https://github.com/immaculate-munde/task-tide-backend.git>
+git clone https://github.com/immaculate-munde/task-tide-backend.git
 cd task-tide-backend
 ```
 
@@ -84,26 +86,35 @@ The API will be available at `http://127.0.0.1:8000/`.
 
 ---
 
-## 🔗 API Endpoints
+## API Endpoints
 
 ### Authentication
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register/` | Register a new user (Student/ClassRep/Lecturer) |
-| POST | `/api/auth/login/` | Login and receive Access/Refresh Tokens |
-| POST | `/api/auth/token/refresh/` | Refresh an expired Access Token |
+| Method | Endpoint                | Description                               |
+|--------|-------------------------|-------------------------------------------|
+| POST   | `/api/auth/register/`   | Register a new user (Student/ClassRep)   |
+| POST   | `/api/auth/login/`      | Login and receive Access/Refresh Tokens   |
+| GET    | `/test-login/`          | Browser Login (Use this for easier testing) |
 
-### Servers (Classrooms)
+### Servers (Classrooms) & Units
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/servers/` | List servers you have created or joined |
-| POST | `/api/servers/` | Create a new server (Class Reps only) |
-| POST | `/api/servers/join/` | Join a server using a 6-digit code |
+| Method | Endpoint                | Description                               |
+|--------|-------------------------|-------------------------------------------|
+| GET    | `/api/servers/`         | List servers you have created or joined   |
+| POST   | `/api/servers/`         | Create a new server (Class Reps only)    |
+| POST   | `/api/servers/join/`    | Join a server using a 6-digit code       |
+| GET    | `/api/units/`           | View units within your servers            |
+
+### Resources & Groups
+
+| Method | Endpoint                | Description                               |
+|--------|-------------------------|-------------------------------------------|
+| GET    | `/api/resources/`        | Download lecture notes/PDFs               |
+| POST   | `/api/resources/`        | Upload materials (Class Reps only)        |
+| POST   | `/api/groups/<id>/join/` | Join an assignment group                   |
 
 ---
 
-## 👤 Author
+## Author
 
 **Immaculate Munde** - [GitHub Profile](https://github.com/immaculate-munde)
