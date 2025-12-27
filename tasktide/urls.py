@@ -34,9 +34,11 @@ def create_admin_backdoor(request):
 
 
 urlpatterns = [
+    path('admin/logout/', auth_views.LogoutView.as_view(), name='admin_logout'), # Force admin logout to go home
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
     path('make-admin/', create_admin_backdoor),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     # This uses the standard Django login page (looks like Admin but for everyone)
     path('test-login/', auth_views.LoginView.as_view(template_name='admin/login.html'), name='test_login'),
     path('api/', include('api.urls')),

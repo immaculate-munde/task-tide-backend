@@ -125,4 +125,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Force "Log in" button to use the Human Page, not the Robot Page
 LOGIN_URL = '/api-auth/login/'
+# Redirect users to the API root after they log in
 LOGIN_REDIRECT_URL = '/api/servers/'
+
+# Redirect users to the homepage after they log out
+LOGOUT_REDIRECT_URL = '/'
