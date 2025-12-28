@@ -4,6 +4,21 @@ TaskTide is a modern backend API for managing academic cohorts, designed with a 
 
 Unlike traditional rigid school portals, TaskTide allows Class Representatives to create dynamic "Servers" (classrooms) where students can join via unique codes, access units (subjects), and collaborate in assignment groups.
 
+## Live Demo
+
+The project is deployed live on Render. You can visit the landing page or test the Admin Panel directly.
+
+- **Live Site:** [https://tasktide-iw5c.onrender.com/](https://tasktide-iw5c.onrender.com/)
+
+### 🔑 Test Credentials
+Use these credentials to access the **Admin Panel** or test the API authentication.
+
+| Role | Username | Password | Access |
+|------|----------|----------|--------|
+| **Admin** | `admin` | `admin123` | Full access to Django Admin Panel |
+
+---
+
 ## Key Features
 
 - **Role-Based Access Control (RBAC):** Distinct permissions for Admins, Class Reps, Lecturers, and Students.
