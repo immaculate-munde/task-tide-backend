@@ -130,3 +130,4 @@ LOGIN_REDIRECT_URL = '/api/servers/'
 
 # Redirect users to the homepage after they log out
 LOGOUT_REDIRECT_URL = '/'
+
